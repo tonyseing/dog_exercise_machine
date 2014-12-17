@@ -1,5 +1,7 @@
 # How to make an exercise machine for your dog
 
+(note: there is still a lot of documentation coming for the casing section)
+
 ###Introduction
 
 The good folks at Intel Mashery were nice enough to send me a free Intel Edison. They asked me to make something cool with it. 
