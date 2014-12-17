@@ -42,14 +42,14 @@ void feedDog(int amount) {
   for(servo_angle = 0; servo_angle < 180; servo_angle++)  
   {                                  
     servo.write(servo_angle);               
-    delay(20);                   
+    delay(200);                   
   } 
   
   // now turn back 180 degrees to 0 degrees
   for(servo_angle = 180; servo_angle > 0; servo_angle--)    
   {                                
     servo.write(servo_angle);           
-    delay(20);       
+    delay(2);       
   } 
 }
 
