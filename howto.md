@@ -64,6 +64,9 @@ Then, you will hook up your servo by wiring 5v to the power pin, ground to the g
 
 ![enter image description here](http://www.bpesolutions.com/gadgets.ws/gprojects/servowg.gif)
 
+----------
+###Code
+
 The accompanying Ardiuno setup code to make these sensors work looks like this:
 
     int echo_pins[2] = {7, 12};
@@ -134,9 +137,9 @@ The code to power your servo is equally simple. You're simply going to iterate a
     }
 
 
-Here is a video of what my servo should do when one of the ultrasonic sensors is triggered:
-
+Here is a video of me testing my ultrasonic-sensor triggered servo:
 https://www.youtube.com/watch?v=shv30x-xJkk
+Hopefully this gives you an indication of what we are trying to achieve.
 
 
 ----------
@@ -156,13 +159,17 @@ Place your servo in a larger box, and cut an opening from the top to the bottom,
 
 
 
-Now, cut a circular piece of any discarded cardboard, large enough to fill the opening of your servo's outer box. Screw your servo arms to this piece of cardboard (duct tape will work if you can't find any screws that will fit). 
+Now, cut a circular piece of any discarded cardboard, large enough to fill the opening of your servo's outer box. Screw your servo arms to this piece of cardboard (duct tape will work if you can't find any screws that will fit). Cut a pizza-shaped slice out of the circular piece of cardboard from the center. This should be roughly 1/6th of the surface area of the circular piece of cardboard.
 
 ![enter image description here](https://lh6.googleusercontent.com/iKIlAFrzudKUD-lK_DaH4c5DcDxeXA2z2v9OS83looo=s0 "20141210_202219.jpg")
+
+
+![enter image description here](https://lh4.googleusercontent.com/9AKlkpCMwqVglXlxDJ81SVDJ8I2bM47OP_cP9LWuMPU=s0 "20141217_084228.jpg")
 
 Next, you'll cut one opening each at the top of two large boxes, just large enough for your ultrasonic sensors to poke their heads through.
 
 ![enter image description here](https://lh5.googleusercontent.com/qtAqi9fpmuQ7tFMtqOWUZMftpEIaJ879D_7h0F6kc2k=s0 "20141217_085127.jpg")
+
 
 Use zip-ties to reinforce the structural integrity of your sensor boxes. Fastening the corners of your two boxes with zip-ties will prevent your boxes from collapsing. 
 
@@ -172,22 +179,18 @@ Now duct tape your sensors affixed to the top of your sensor boxes.
 
 ![enter image description here](https://lh4.googleusercontent.com/91CZMa7hF84xfDJ5r3qMpKmigqzNBXKzq80-mo7AuGo=s0 "20141217_083135.jpg")
 
+Cut a face off a large cardboard box, and fold it in half lengthwise. We'll use this as a makeshift funnel, to hold the dog food. Place one end on top of your servo box, and the other end into the mouth you had cut for the servo. Make sure the funnel does not go beyond the opening of the box, and try to create as little of an opening as possible, to avoid having food spill into your servo's casing. Use duct tape to hold this funnel in place. 
 
+ ![enter image description here](https://lh5.googleusercontent.com/3HYEo6nxTK81OvK4IsFFuWNbZkzXoyB1prPqVymmgoY=s0 "20141217_085035.jpg")
 
-
+A look inside our servo's casing: 
 ![enter image description here](https://lh3.googleusercontent.com/mn7EhwvmftcSfnILcjn0Nznl5vMJl9Gi9FPbOkCNnX8=s0 "20141217_082332.jpg")
 
+Now you're all set to go! When your dog runs through both boxes, your servo will turn 180 degrees momentarily, letting out some much-deserved treats for your pooch. 
 
-
-![enter image description here](https://lh4.googleusercontent.com/9AKlkpCMwqVglXlxDJ81SVDJ8I2bM47OP_cP9LWuMPU=s0 "20141217_084228.jpg")
-
-![enter image description here](https://lh5.googleusercontent.com/3HYEo6nxTK81OvK4IsFFuWNbZkzXoyB1prPqVymmgoY=s0 "20141217_085035.jpg")
+Here is a picture of the entire setup. Please don't tell people how messy my apartment is.
 
 ![enter image description here](https://lh6.googleusercontent.com/y3ULCd7g-yuJgScaZ160mX5akqW2g8CskQSkpFs38O4=s0 "20141217_085503.jpg")
-
-
-![enter image description here](https://lh6.googleusercontent.com/HWXQz1YFk0W7YIWMntMx18t4LerNBEYHT96Xh_CLbV4=s0 "20141217_082503.jpg")
-
 
 
 
