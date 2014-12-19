@@ -1,6 +1,5 @@
 # How to make an exercise machine for your dog
 
-(note: there is still a lot of documentation coming for the casing section)
 
 ###Introduction
 
@@ -24,10 +23,7 @@ I thought of systems requiring rope and pulleys to dangle something my dog would
 
 I decided to place two boxes far apart from each other, and affix ultrasonic sensors to the top of them. The sensors would detect when the dog was passing through, and when she has passed through both, the machine would use a servo motor to open the mouth to a funnel of dog food for a quick moment, releasing a small parcel of dog treats.
 
-
 ###What you'll need
-
-
 
 * 1 bored dog
 * 3 moderately large boxes
@@ -141,6 +137,7 @@ Here is a video of me testing my ultrasonic-sensor triggered servo:
 https://www.youtube.com/watch?v=shv30x-xJkk
 Hopefully this gives you an indication of what we are trying to achieve.
 
+You can find the entire Arduino source code at: https://github.com/tonyseing/dog_exercise_machine.git
 
 ----------
 
