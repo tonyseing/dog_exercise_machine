@@ -60,29 +60,58 @@ We're going to send out a pulse through the echo and track the time required for
 
 The accompanying setup code to make these sensors work looks like this:
 
-> int echo_pins[2] = {7, 12};
-> int trig_pins[2] = {8, 13};
->  pinMode(trig_pins[0], OUTPUT);
- > pinMode(echo_pins[0], INPUT);  
->  pinMode(trig_pins[1], OUTPUT);
- > pinMode(echo_pins[1], INPUT);  
+    int echo_pins[2] = {7, 12};
+    int trig_pins[2] = {8, 13};
+    pinMode(trig_pins[0], OUTPUT);
+    pinMode(echo_pins[0], INPUT);  
+    pinMode(trig_pins[1], OUTPUT);
+    pinMode(echo_pins[1], INPUT);  
 
 In your loop function, your code will look like this:
 
-> digitalWrite(trig_pins[boxNumber], LOW); 
->  delayMicroseconds(2); // low for 2 microseconds
->  digitalWrite(trig_pins[boxNumber], HIGH);
->  delayMicroseconds(10); // high for 10 microseconds
->  digitalWrite(trig_pins[boxNumber], LOW);
->  duration = pulseIn(echo_pins[boxNumber], HIGH); // measure the time to the echo
-> distance = (duration / 2) / 29.1;  
+    digitalWrite(trig_pins[boxNumber], LOW); 
+    delayMicroseconds(2); // low for 2 microseconds
+    digitalWrite(trig_pins[boxNumber], HIGH);
+    delayMicroseconds(10); // high for 10 microseconds
+    digitalWrite(trig_pins[boxNumber], LOW);
+    duration = pulseIn(echo_pins[boxNumber], HIGH); // measure the time to the echo
+    distance = (duration / 2) / 29.1;  
 
 This block of code shoots a soundwave out from our sensor and tracks the time it takes to echo back. You'll then use this distance to make decisions about triggering the servo.
 
+Here is the entire function detecting if your dog has passed through both box checkpoints:
 
+    boolean is_something_there (int boxNumber) {
+       long duration, distance;
+     
+      // send the pulse
+       boolean dog_detected = false;
+       digitalWrite(trig_pins[boxNumber], LOW); 
+       delayMicroseconds(2); // low for 2 microseconds
+       digitalWrite(trig_pins[boxNumber], HIGH);
+       delayMicroseconds(10); // high for 10 microseconds
+       digitalWrite(trig_pins[boxNumber], LOW);
+       duration = pulseIn(echo_pins[boxNumber], HIGH); // measure the time to the echo
+       distance = (duration / 2) / 29.1;  // calculate the distance in centimeters
+          
+           
+       if (distance < triggerBoundary) {
+         Serial.println("DOG DETECTED");  
+         Serial.println(distance);   
+         dog_detected = true;
+       }
+       else {
+         Serial.println("NO DOG DETECTED");
+         Serial.println(distance);
+       }
+          
+       return dog_detected;
+    }
 
 
 ### Casing
+
+
 
 ![enter image description here](https://lh6.googleusercontent.com/-BZDf3E9ZlZR9uT-xFA7ncm2QMgnGlYSLEgUXs_CMMM=s0 "20141210_164612.jpg")
 
@@ -113,4 +142,5 @@ This block of code shoots a soundwave out from our sensor and tracks the time it
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=shv30x-xJkk" target="_blank"><img src="http://img.youtube.com/vi/shv30x-xJkk/0.jpg" 
  width="240" height="180" border="10" /></a>
+
 
