@@ -47,8 +47,40 @@ I decided to place two boxes far apart from each other, and affix ultrasonic sen
 
 ### Electronics
 
-I've provided a schematic of how the machine is wired below. I created this in Fritzing, a neat schematic-drawing tool I just found last evening.
+I've provided a schematic of how the machine is wired below. I created this in Fritzing, a neat schematic-drawing tool. Essentially, you'll affix two ultrasonic sensors to breadboards and your breakout board. The HC-SR04 has four pins:
+
+VCC: +5V DC
+Trig : Trigger (INPUT)
+Echo: Echo (OUTPUT)
+GND: GND
+
+We're going to send out a pulse through the echo and track the time required for the sound to come back to the sensor. This will give us an idea of how far away an object is from the sensor, which in our case, is a dog. 
+
 ![enter image description here](https://lh3.googleusercontent.com/-cU0Vz-ATYDs/VJHSWeUkBII/AAAAAAAANp8/_ufhjH-woM8/s0/blueprint.jpg "blueprint.jpg")
+
+The accompanying setup code to make these sensors work looks like this:
+
+> int echo_pins[2] = {7, 12};
+> int trig_pins[2] = {8, 13};
+>  pinMode(trig_pins[0], OUTPUT);
+ > pinMode(echo_pins[0], INPUT);  
+>  pinMode(trig_pins[1], OUTPUT);
+ > pinMode(echo_pins[1], INPUT);  
+
+In your loop function, your code will look like this:
+
+> digitalWrite(trig_pins[boxNumber], LOW); 
+>  delayMicroseconds(2); // low for 2 microseconds
+>  digitalWrite(trig_pins[boxNumber], HIGH);
+>  delayMicroseconds(10); // high for 10 microseconds
+>  digitalWrite(trig_pins[boxNumber], LOW);
+>  duration = pulseIn(echo_pins[boxNumber], HIGH); // measure the time to the echo
+> distance = (duration / 2) / 29.1;  
+
+This block of code shoots a soundwave out from our sensor and tracks the time it takes to echo back. You'll then use this distance to make decisions about triggering the servo.
+
+
+
 
 ### Casing
 
