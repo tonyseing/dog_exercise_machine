@@ -47,7 +47,11 @@ I decided to place two boxes far apart from each other, and affix ultrasonic sen
 
 ### Electronics
 
-I've provided a schematic of how the machine is wired below. I created this in Fritzing, a neat schematic-drawing tool. Essentially, you'll affix two ultrasonic sensors to breadboards and your breakout board. The HC-SR04 has four pins:
+I've provided a schematic of how the machine is wired for clarity. I created the schematic in Fritzing. 
+
+![enter image description here](https://lh3.googleusercontent.com/-cU0Vz-ATYDs/VJHSWeUkBII/AAAAAAAANp8/_ufhjH-woM8/s0/blueprint.jpg "blueprint.jpg")
+
+Essentially, you'll affix two ultrasonic sensors to breadboards and your breakout board. The HC-SR04 has four pins:
 
 VCC: +5V DC
 Trig : Trigger (INPUT)
@@ -56,9 +60,11 @@ GND: GND
 
 We're going to send out a pulse through the echo and track the time required for the sound to come back to the sensor. This will give us an idea of how far away an object is from the sensor, which in our case, is a dog. 
 
-![enter image description here](https://lh3.googleusercontent.com/-cU0Vz-ATYDs/VJHSWeUkBII/AAAAAAAANp8/_ufhjH-woM8/s0/blueprint.jpg "blueprint.jpg")
+Then, you will hook up your servo by wiring 5v to the power pin, ground to the ground pin, and the signal pin to pin 9 on your arduino board. For most servos, the red wire will be for your power, white or orange for your signal, and brown or black for your ground. I found this useful chart at http://www.bpesolutions.com/:
 
-The accompanying setup code to make these sensors work looks like this:
+![enter image description here](http://www.bpesolutions.com/gadgets.ws/gprojects/servowg.gif)
+
+The accompanying Ardiuno setup code to make these sensors work looks like this:
 
     int echo_pins[2] = {7, 12};
     int trig_pins[2] = {8, 13};
@@ -109,30 +115,69 @@ Here is the entire function detecting if your dog has passed through both box ch
     }
 
 
+The code to power your servo is equally simple. You're simply going to iterate a variable from 0 to 180 over a period of time, and set the servo arm angle to that variable. This will shutter your dog treat feeder's mouth open and closed.
+
+    void feedDog() {
+      // turn 180 degrees in one direction
+      for(servo_angle = 0; servo_angle < 180; servo_angle++)  
+      {                                  
+        servo.write(servo_angle);               
+        delay(20);                   
+      } 
+      
+      // now turn back 180 degrees to 0 degrees
+      for(servo_angle = 180; servo_angle > 0; servo_angle--)    
+      {                                
+        servo.write(servo_angle);           
+        delay(20);       
+      } 
+    }
+
+
+Here is a video of what my servo should do when one of the ultrasonic sensors is triggered:
+
+https://www.youtube.com/watch?v=shv30x-xJkk
+
+
+----------
+
+
 ### Casing
 
-
+You'll use a small box to affix your servo to. I used an old box my cell phone came packaged in. You'll mark the shape of your servo along the middle of the box turned on its side. And you'll slide your servo in like so:
 
 ![enter image description here](https://lh6.googleusercontent.com/-BZDf3E9ZlZR9uT-xFA7ncm2QMgnGlYSLEgUXs_CMMM=s0 "20141210_164612.jpg")
 
+Place your servo in a larger box, and cut an opening from the top to the bottom, with the largest surface of the box placed on the ground. This opening should be the width of your servo, and should be snug enough to allow it to slide in. Use duct tape to secure it.
 
 ![enter image description here](https://lh3.googleusercontent.com/sdzsrf_BGX0__iJMzVbMTZVnpR5xLw-ho-VbQfxzJn8=s0 "20141210_190824.jpg")
 
-
-
 ![enter image description here](https://lh5.googleusercontent.com/IkgYOtmEOoKX95WudQtcmybMj7q3aKzAWlSasCg5M3Q=s0 "20141210_190816.jpg")
 
-![enter image description here](https://lh5.googleusercontent.com/qtAqi9fpmuQ7tFMtqOWUZMftpEIaJ879D_7h0F6kc2k=s0 "20141217_085127.jpg")
+
+
+Now, cut a circular piece of any discarded cardboard, large enough to fill the opening of your servo's outer box. Screw your servo arms to this piece of cardboard (duct tape will work if you can't find any screws that will fit). 
 
 ![enter image description here](https://lh6.googleusercontent.com/iKIlAFrzudKUD-lK_DaH4c5DcDxeXA2z2v9OS83looo=s0 "20141210_202219.jpg")
 
+Next, you'll cut one opening each at the top of two large boxes, just large enough for your ultrasonic sensors to poke their heads through.
+
+![enter image description here](https://lh5.googleusercontent.com/qtAqi9fpmuQ7tFMtqOWUZMftpEIaJ879D_7h0F6kc2k=s0 "20141217_085127.jpg")
+
+Use zip-ties to reinforce the structural integrity of your sensor boxes. Fastening the corners of your two boxes with zip-ties will prevent your boxes from collapsing. 
+
 ![enter image description here](https://lh3.googleusercontent.com/1e8fStzHCpkD0gILHZ6HP1l3MBkRqkrHBPnttjBth_k=s0 "20141217_043921.jpg")
 
-![enter image description here](https://lh6.googleusercontent.com/HWXQz1YFk0W7YIWMntMx18t4LerNBEYHT96Xh_CLbV4=s0 "20141217_082503.jpg")
+Now duct tape your sensors affixed to the top of your sensor boxes.
+
+![enter image description here](https://lh4.googleusercontent.com/91CZMa7hF84xfDJ5r3qMpKmigqzNBXKzq80-mo7AuGo=s0 "20141217_083135.jpg")
+
+
+
 
 ![enter image description here](https://lh3.googleusercontent.com/mn7EhwvmftcSfnILcjn0Nznl5vMJl9Gi9FPbOkCNnX8=s0 "20141217_082332.jpg")
 
-![enter image description here](https://lh4.googleusercontent.com/91CZMa7hF84xfDJ5r3qMpKmigqzNBXKzq80-mo7AuGo=s0 "20141217_083135.jpg")
+
 
 ![enter image description here](https://lh4.googleusercontent.com/9AKlkpCMwqVglXlxDJ81SVDJ8I2bM47OP_cP9LWuMPU=s0 "20141217_084228.jpg")
 
@@ -140,7 +185,9 @@ Here is the entire function detecting if your dog has passed through both box ch
 
 ![enter image description here](https://lh6.googleusercontent.com/y3ULCd7g-yuJgScaZ160mX5akqW2g8CskQSkpFs38O4=s0 "20141217_085503.jpg")
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=shv30x-xJkk" target="_blank"><img src="http://img.youtube.com/vi/shv30x-xJkk/0.jpg" 
- width="240" height="180" border="10" /></a>
+
+![enter image description here](https://lh6.googleusercontent.com/HWXQz1YFk0W7YIWMntMx18t4LerNBEYHT96Xh_CLbV4=s0 "20141217_082503.jpg")
+
+
 
 
