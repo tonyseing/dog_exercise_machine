@@ -31,8 +31,8 @@ void setup() {
   pinMode(trig_pins[0], OUTPUT);
   pinMode(echo_pins[0], INPUT);  
 
-//  pinMode(trig_pins[1], OUTPUT);
-//  pinMode(echo_pins[1], INPUT);  
+  pinMode(trig_pins[1], OUTPUT);
+  pinMode(echo_pins[1], INPUT);  
 }
 
 // choose any nonzero amount less than 1
